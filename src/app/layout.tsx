@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, JetBrains_Mono, Poppins } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Serif, JetBrains_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
@@ -20,6 +20,13 @@ const mono = JetBrains_Mono({
   weight: ["400", "500", "600", "700"],
 });
 
+const serif = Instrument_Serif({
+  variable: "--font-serif-face",
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+});
+
 export const metadata: Metadata = {
   title: "KIDOO HUB — Technology & Growth Hub",
   description:
@@ -37,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${display.variable} ${sans.variable} ${mono.variable} antialiased`}
+      className={`${display.variable} ${sans.variable} ${mono.variable} ${serif.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

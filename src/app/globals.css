@@ -7,6 +7,7 @@
   --font-display: var(--font-display-face);
   --font-sans: var(--font-sans-face);
   --font-mono: var(--font-mono-face);
+  --font-serif: var(--font-serif-face), "Times New Roman", serif;
 }
 
 html {
@@ -29,9 +30,22 @@ body {
   }
 }
 
+@layer base {
+  p:not(.font-display) {
+    text-align: justify;
+    hyphens: manual;
+  }
+}
+
 ::selection {
   background: #353f34;
   color: #ffffff;
+}
+
+.hero-copy p {
+  text-align: start;
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 /* Hairline technical grid */
@@ -223,5 +237,466 @@ body {
   .caret::after,
   .cursor-blink {
     animation: none;
+  }
+}
+
+/* Jornada do arco */
+.kx-journey,
+.kx-journey * {
+  box-sizing: border-box;
+}
+.kx-journey {
+  --g: #353f34;
+  --g2: #4a5648;
+  --g3: #6e7a6b;
+  --soft: #e5eae3;
+  --ink: #1f251e;
+  --muted: #5c665a;
+  --line: #d9dfd6;
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+  color: var(--ink);
+  font-family: var(--font-sans-face), "Poppins", sans-serif;
+}
+.kx-journey p {
+  text-align: start;
+  hyphens: manual;
+}
+.kx-arch-wrap {
+  position: relative;
+  container-type: inline-size;
+  transform-origin: center bottom;
+  transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform-style: preserve-3d;
+}
+.kx-arch {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 700 / 620;
+}
+.kx-arch svg.kx-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.kx-band {
+  stroke: var(--g);
+  stroke-width: 84;
+  fill: none;
+  stroke-dasharray: 1160;
+  stroke-dashoffset: 1160;
+  animation: kx-band 1.6s 0.35s cubic-bezier(0.65, 0, 0.25, 1) forwards;
+}
+.kx-on-dark .kx-band {
+  stroke: #e7ece4;
+}
+.kx-rail {
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 2 9;
+}
+.kx-on-dark .kx-rail {
+  stroke: rgba(53, 63, 52, 0.28);
+}
+.kx-trail {
+  stroke: #fff;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+}
+.kx-on-dark .kx-trail {
+  stroke: #353f34;
+}
+.kx-dot-halo {
+  fill: rgba(255, 255, 255, 0.22);
+}
+.kx-on-dark .kx-dot-halo {
+  fill: rgba(53, 63, 52, 0.22);
+}
+.kx-dot {
+  fill: #fff;
+}
+.kx-on-dark .kx-dot {
+  fill: #353f34;
+}
+.kx-pill {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  padding: 0.55em 1em 0.55em 0.7em;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: clamp(10px, 1.9cqw, 13.5px);
+  font-weight: 500;
+  color: var(--muted);
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+  opacity: 0;
+  animation: kx-fade 0.5s ease forwards;
+}
+.kx-pill b {
+  display: grid;
+  place-items: center;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--g);
+  font-size: 0.8em;
+  font-weight: 600;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+}
+.kx-pill.on {
+  background: var(--g);
+  color: #fff;
+  border-color: var(--g);
+  box-shadow: 0 10px 24px -10px rgba(53, 63, 52, 0.6);
+}
+.kx-pill.on b {
+  background: #fff;
+  color: var(--g);
+}
+.kx-pill.done {
+  color: var(--ink);
+}
+.kx-pill.done b {
+  background: var(--g);
+  color: #fff;
+}
+.kx-stage {
+  position: absolute;
+  left: 31%;
+  width: 38%;
+  top: 49%;
+  height: 38%;
+  font-size: clamp(9px, 1.95cqw, 13.5px);
+}
+.kx-card {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  background: #fff;
+  border-radius: 1.2em;
+  padding: 1.1em;
+  box-shadow: 0 1.8em 3em -1.4em rgba(31, 37, 30, 0.35);
+  opacity: 0;
+  transform: translateY(1.2em) scale(0.96);
+  transition:
+    opacity 0.45s ease,
+    transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+.kx-card.on {
+  opacity: 1;
+  transform: none;
+}
+.kx-card small {
+  display: block;
+  font-size: 0.78em;
+  color: var(--muted);
+}
+.kx-card h4 {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.kx-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.kx-av {
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 50%;
+  background: var(--g);
+  flex: none;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85em;
+}
+.kx-img {
+  margin: 0.8em 0;
+  height: 5.2em;
+  border-radius: 0.7em;
+  background: var(--soft);
+  position: relative;
+  overflow: hidden;
+}
+.kx-img::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1.6em;
+  width: 5.4em;
+  height: 5.4em;
+  margin-left: -2.7em;
+  border-radius: 50%;
+  border: 1.2em solid var(--g3);
+  opacity: 0.55;
+}
+.kx-cta-mini {
+  margin-left: auto;
+  padding: 0.45em 0.9em;
+  border-radius: 999px;
+  background: var(--g);
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+.kx-bars i {
+  display: block;
+  height: 0.55em;
+  border-radius: 0.3em;
+  background: var(--soft);
+  margin-top: 0.45em;
+}
+.kx-bars i:nth-child(1) {
+  width: 85%;
+  background: var(--g);
+  height: 0.75em;
+}
+.kx-bars i:nth-child(2) {
+  width: 60%;
+  background: var(--g);
+  height: 0.75em;
+}
+.kx-bars i:nth-child(3) {
+  width: 90%;
+}
+.kx-bars i:nth-child(4) {
+  width: 70%;
+}
+.kx-browser {
+  display: flex;
+  gap: 0.35em;
+  margin-bottom: 0.8em;
+}
+.kx-browser span {
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background: var(--line);
+}
+.kx-site-btn {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.9em;
+  padding: 0.55em 1.1em;
+  border-radius: 999px;
+  background: var(--g);
+  color: #fff;
+  font-size: 0.82em;
+  font-weight: 500;
+}
+.kx-cursor {
+  position: absolute;
+  right: -1.1em;
+  bottom: -1.3em;
+  width: 1.6em;
+  height: 1.6em;
+  color: var(--ink);
+}
+.kx-card.on .kx-cursor {
+  animation: kx-click 1.6s ease forwards;
+}
+.kx-card.on .kx-site-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid var(--g);
+  animation: kx-ripple 1s 0.9s ease-out forwards;
+  opacity: 0;
+}
+.kx-field {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 0.55em 0;
+  border-top: 1px solid #eef1ec;
+  font-size: 0.86em;
+}
+.kx-field span {
+  color: var(--muted);
+}
+.kx-field strong {
+  font-weight: 500;
+  text-align: right;
+}
+.kx-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.3em 0.7em;
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--g);
+  font-size: 0.75em;
+  font-weight: 600;
+}
+.kx-bub {
+  max-width: 88%;
+  padding: 0.6em 0.85em;
+  border-radius: 1em;
+  font-size: 0.88em;
+  line-height: 1.4;
+  margin-top: 0.5em;
+}
+.kx-bub.in {
+  background: #f1f3ef;
+  border-bottom-left-radius: 0.3em;
+}
+.kx-bub.out {
+  margin-left: auto;
+  background: var(--g);
+  color: #fff;
+  border-bottom-right-radius: 0.3em;
+}
+.kx-card.on .kx-bub.out {
+  animation: kx-pop 0.5s 0.7s both cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.kx-check {
+  width: 3.4em;
+  height: 3.4em;
+  margin: 0.2em auto 0.8em;
+  border-radius: 50%;
+  background: var(--g);
+  display: grid;
+  place-items: center;
+}
+.kx-check path {
+  stroke: #fff;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+}
+.kx-card.on .kx-check path {
+  animation: kx-checkdraw 0.6s 0.35s ease forwards;
+}
+.kx-center {
+  text-align: center;
+}
+@keyframes kx-fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes kx-band {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes kx-click {
+  0% {
+    transform: translate(2.4em, 1.6em);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    transform: translate(0, 0);
+  }
+  70% {
+    transform: scale(0.85);
+  }
+  80%,
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes kx-ripple {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5, 1.9);
+  }
+}
+@keyframes kx-pop {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em) scale(0.9);
+  }
+}
+@keyframes kx-checkdraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@container (max-width: 520px) {
+  .kx-band {
+    stroke-width: 56;
+  }
+  .kx-stage {
+    left: 27%;
+    width: 46%;
+    top: 46%;
+    height: 40%;
+    font-size: 10.5px;
+  }
+  .kx-card {
+    padding: 0.65em 0.7em;
+    border-radius: 0.85em;
+  }
+  .kx-img {
+    height: 2.6em;
+    margin: 0.4em 0;
+  }
+  .kx-pill {
+    font-size: 10px;
+    gap: 4px;
+    padding: 0.32em 0.55em 0.32em 0.32em;
+  }
+  .kx-cta-mini {
+    white-space: nowrap;
+    padding: 0.35em 0.55em;
+  }
+  .kx-bub {
+    max-width: 100%;
+    font-size: 0.78em;
+    line-height: 1.3;
+    padding: 0.38em 0.5em;
+  }
+  .kx-field {
+    gap: 0.35em;
+    padding: 0.35em 0;
+    font-size: 0.76em;
+  }
+  .kx-field strong {
+    min-width: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kx-journey *,
+  .kx-journey *::before,
+  .kx-journey *::after {
+    animation-duration: 0.001s !important;
+    animation-delay: 0s !important;
+    transition: none !important;
   }
 }

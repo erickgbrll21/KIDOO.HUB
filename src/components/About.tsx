@@ -1,8 +1,6 @@
 import { Reveal } from "./Reveal";
 import { SectionLabel } from "./SectionLabel";
 
-const MARKS = ["KIDOO / HUB", "KIDOO.HUB", "KIDOO_", "<KIDOO />", "KIDOO // DIGITAL"];
-
 export function About() {
   return (
     <section id="sobre" className="relative overflow-hidden border-t border-moss/10 py-20 lg:py-36">
@@ -51,24 +49,6 @@ export function About() {
             </Reveal>
           </div>
         </div>
-
-        <Reveal delay={150} className="mt-20">
-          <ul className="grid grid-cols-2 border-t border-l border-moss/10 sm:grid-cols-3 lg:grid-cols-5">
-            {MARKS.map((m, i) => (
-              <li
-                key={m}
-                className={`group flex aspect-[5/3] flex-col justify-between border-r border-b border-moss/10 p-5 transition-colors duration-300 hover:bg-moss hover:text-white ${
-                  i === MARKS.length - 1 ? "col-span-2 sm:col-span-1" : ""
-                }`}
-              >
-                <span className="font-mono text-[10px] tracking-[0.2em] text-moss/35 group-hover:text-white/45">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="font-mono text-sm tracking-wide sm:text-base">{m}</span>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
       </div>
     </section>
   );

@@ -61,6 +61,16 @@ const BY_GOAL = [
   { icon: "layers", title: "Projeto sob medida", text: "Sistemas, integrações e dashboards", href: serviceHref("landing-pages") },
 ];
 
+function InstagramIcon({ className = "h-5 w-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" className={className} aria-hidden>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 function Chevron({ open }: { open: boolean }) {
   return (
     <svg
@@ -229,19 +239,13 @@ export function Header() {
 
           <div className="flex items-center gap-2">
             <a
-              href="#contato"
-              className="hidden rounded-lg px-3.5 py-2 text-[14px] font-semibold text-white/85 transition-colors hover:text-white md:block"
-            >
-              Contato
-            </a>
-            <a
-              href={CONTACT.whatsapp}
+              href={CONTACT.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 min-w-[44px] items-center justify-center rounded-xl bg-white px-3.5 text-[13px] font-semibold text-moss transition-transform hover:-translate-y-0.5 sm:px-5 sm:text-[14px]"
+              aria-label="Instagram da KIDOO"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl text-white transition-colors hover:bg-white/10"
             >
-              <span className="sm:hidden">Falar</span>
-              <span className="hidden sm:inline">Falar com a KIDOO</span>
+              <InstagramIcon />
             </a>
             <button
               type="button"
@@ -313,7 +317,7 @@ export function Header() {
                   ))}
                 </div>
               )}
-              {[...NAV, { label: "Contato", href: "#contato" }].map((item) => (
+              {NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -325,12 +329,13 @@ export function Header() {
                 </Link>
               ))}
               <a
-                href={CONTACT.whatsapp}
+                href={CONTACT.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 flex min-h-12 justify-center rounded-xl bg-white px-5 py-3.5 text-[15px] font-semibold text-moss"
+                className="mt-2 flex min-h-12 items-center justify-center gap-2.5 rounded-xl border border-white/20 px-5 py-3.5 text-[15px] font-semibold"
               >
-                Falar com a KIDOO
+                <InstagramIcon />
+                Instagram
               </a>
             </div>
           </>
