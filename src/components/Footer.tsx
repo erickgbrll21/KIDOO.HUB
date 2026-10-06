@@ -10,7 +10,7 @@ const NAV = [
   { label: "Tráfego Pago", href: serviceHref("trafego-pago") },
   { label: "Cases", href: null },
   { label: "Sobre", href: "/#sobre" },
-  { label: "Contato", href: "#contato" },
+  { label: "Contato", href: "/contato" },
 ];
 
 const SOCIAL = [
