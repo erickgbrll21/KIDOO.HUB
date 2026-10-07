@@ -128,10 +128,8 @@ function MegaMenu({ onNavigate }: { onNavigate: () => void }) {
             <span className="mt-1 block text-[13px] text-white/55">{g.text}</span>
           </Link>
         ))}
-        <a
-          href={CONTACT.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/contato"
           onClick={onNavigate}
           className="group relative mt-auto overflow-hidden rounded-xl border border-white/25 bg-gradient-to-br from-white/[0.14] to-white/[0.03] px-4 py-4"
         >
@@ -146,7 +144,7 @@ function MegaMenu({ onNavigate }: { onNavigate: () => void }) {
             Falar com a KIDOO
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </span>
-        </a>
+        </Link>
       </div>
     </div>
   );

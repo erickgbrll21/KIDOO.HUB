@@ -53,8 +53,9 @@ export function ContactForm() {
       return;
     }
     setErro("");
-    const inbox = CONTACT.email.replace(/^mailto:/, "").split("?")[0];
     const corpo = [
+      "Olá, KIDOO HUB! Vim pelo site.",
+      "",
       `Nome: ${nomeLimpo}`,
       `WhatsApp comercial: ${whatsapp.trim()}`,
       `Empresa / segmento: ${empresaLimpa}`,
@@ -64,7 +65,9 @@ export function ContactForm() {
       "",
       `Volume de atendimentos/dia: ${volume || "não informado"}`,
     ].join("\n");
-    window.location.href = `mailto:${inbox}?subject=${encodeURIComponent("Contato pelo site")}&body=${encodeURIComponent(corpo)}`;
+    const url = `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(corpo)}`;
+    const janela = window.open(url, "_blank", "noopener,noreferrer");
+    if (!janela) window.location.href = url;
     setEnviado(true);
   };
 
@@ -73,7 +76,7 @@ export function ContactForm() {
       <div className="rounded-[1.75rem] border border-moss/12 bg-moss/[0.04] px-6 py-10 sm:px-8">
         <p className="font-display text-2xl font-bold tracking-[-0.03em] text-moss">Mensagem pronta.</p>
         <p className="mt-3 text-start text-base leading-relaxed text-moss/70">
-          Seu e-mail vai abrir com o que você marcou. Se não abrir, envie para contato@kidoohub.com.br.
+          O WhatsApp vai abrir com o que você marcou. Se não abrir, envie para (31) 99587-0862.
         </p>
       </div>
     );

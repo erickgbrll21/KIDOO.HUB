@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import heroBg from "../../public/hero/hero-bg.png";
 import heroBgMobile from "../../public/hero/hero-bg-mobile.png";
 
@@ -50,15 +51,15 @@ export function Hero() {
           ecossistema digital completo para o seu negócio.
         </p>
         <div className="relative mt-8 flex flex-wrap items-start gap-2.5">
-          <a
-            href="#contato"
+          <Link
+            href="/contato"
             className="group inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-white py-2 pr-1.5 pl-4 text-sm font-medium whitespace-nowrap text-moss transition-transform hover:-translate-y-0.5"
           >
             Fale com um especialista
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-moss text-white transition-transform group-hover:translate-x-0.5">
               →
             </span>
-          </a>
+          </Link>
           <a
             href="#como-opera"
             className="inline-flex h-10 shrink-0 items-center justify-center rounded-full border border-white/40 bg-[#161c15]/35 px-4 text-sm font-medium whitespace-nowrap text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-[#161c15]/50"

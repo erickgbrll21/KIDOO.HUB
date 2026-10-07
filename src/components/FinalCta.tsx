@@ -1,8 +1,8 @@
+import Link from "next/link";
 import MetallicPaint from "./MetallicPaint";
 import { JourneyArch } from "./JourneyArch";
 import { Reveal } from "./Reveal";
 import metalLogo from "../../public/brand/kidoo-hub-metal.png";
-import { CONTACT } from "@/lib/site";
 
 export function FinalCta() {
   return (
@@ -53,23 +53,21 @@ export function FinalCta() {
             </Reveal>
             <Reveal delay={220}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-                <a
-                  href={CONTACT.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/contato"
                   className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-white py-3.5 pr-4 pl-7 text-[15px] font-medium text-moss transition-transform hover:-translate-y-0.5 sm:w-auto"
                 >
                   Falar com a KIDOO
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-moss text-white transition-transform group-hover:translate-x-1">
                     →
                   </span>
-                </a>
-                <a
-                  href={CONTACT.email}
+                </Link>
+                <Link
+                  href="/contato"
                   className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/25 px-7 py-3.5 text-[15px] font-medium transition-colors hover:border-white hover:bg-white/5 sm:w-auto"
                 >
                   Solicitar orçamento
-                </a>
+                </Link>
               </div>
             </Reveal>
           </div>

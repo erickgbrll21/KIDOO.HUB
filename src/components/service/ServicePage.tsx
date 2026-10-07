@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Reveal } from "../Reveal";
 import { SectionLabel } from "../SectionLabel";
 import { ServiceHeroVisual } from "./ServiceHeroVisual";
-import { CONTACT } from "@/lib/site";
 import { SERVICES, serviceHref, type Service, type ServiceSlug } from "@/lib/services";
 
 const d = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
@@ -50,17 +49,15 @@ function Hero({ service }: { service: Service }) {
           </p>
 
           <div className="rise mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4" style={d(480)}>
-            <a
-              href={CONTACT.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contato"
               className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full bg-moss py-3.5 pr-4 pl-7 text-[15px] font-medium text-white shadow-[0_18px_40px_-18px_rgb(53_63_52/0.7)] transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
               Falar com a KIDOO
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15 transition-transform group-hover:translate-x-1">
                 →
               </span>
-            </a>
+            </Link>
             <a
               href="#como-funciona"
               className="inline-flex min-h-12 w-full items-center justify-center rounded-full border border-moss/20 px-7 py-3.5 text-[15px] font-medium transition-colors hover:border-moss sm:w-auto"
